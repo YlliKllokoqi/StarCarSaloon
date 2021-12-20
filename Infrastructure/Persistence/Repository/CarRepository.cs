@@ -42,6 +42,7 @@ namespace Infrastructure.Persistence.Repository
 
         public void UpdateCar(Car car)
         {
+            dbContext.ChangeTracker.Clear();
             dbContext.Cars.Update(car);
             dbContext.SaveChanges();
         }

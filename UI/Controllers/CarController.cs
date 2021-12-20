@@ -44,7 +44,8 @@ namespace UI.Controllers
         public async Task<IActionResult> UpdateCar(UpdateCarDTO car)
         {
             var UpdatedCar = await service.GetCarById(car.id);
-            var newCar = mapper.Map<UpdateCarDTO>(UpdatedCar);
+            var CarToBe = mapper.Map(car, UpdatedCar);
+            var newCar = mapper.Map<UpdateCarDTO>(CarToBe);
             service.UpdateCar(newCar);
             return Ok();
         }
