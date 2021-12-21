@@ -3,6 +3,7 @@ using Application.Services.Car;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Model.Car;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -22,26 +23,31 @@ namespace UI.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateCar(CreateCarDTO car)
+        public IActionResult CreateCar(CreateCarModel car)
         {
-            service.CreateCar(car);
+            var createdCar = mapper.Map<CreateCarDTO>(car);
+            service.CreateCar(createdCar);
             return Ok();
         }
 
         [HttpGet]
-        public async Task<IEnumerable<GetCarDTO>> GetAllCars()
+        public async Task<IEnumerable<GetCarModel>> GetAllCars()
         {
-            return await service.GetAllCars();
+            var cars = await service.GetAllCars();
+            var returnedCars = mapper.Map<IEnumerable<GetCarModel>>(cars);
+            return returnedCars;
         }
 
         [HttpGet("{ID}")]
-        public async Task<GetCarDTO> GetCarById(int id)
+        public async Task<GetCarModel> GetCarById(int id)
         {
-            return await service.GetCarById(id);
+            var car = await service.GetCarById(id);
+            var returnedCar = mapper.Map<GetCarModel>(car);
+            return returnedCar;
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateCar(UpdateCarDTO car)
+        public async Task<IActionResult> UpdateCar(UpdateCarModel car)
         {
             var UpdatedCar = await service.GetCarById(car.id);
             var CarToBe = mapper.Map(car, UpdatedCar);
