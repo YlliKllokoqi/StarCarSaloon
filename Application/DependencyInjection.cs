@@ -1,4 +1,5 @@
 ﻿using Application.Services.Car;
+using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,11 @@ namespace Application
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             services.AddScoped<ICarService, CarService>();
+
+            services.AddMvc().AddFluentValidation(fv =>
+            {
+                fv.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            });
 
             return services;
         }
