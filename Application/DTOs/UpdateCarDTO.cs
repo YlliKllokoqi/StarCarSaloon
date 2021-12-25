@@ -13,8 +13,9 @@ namespace Application.DTOs
         public string Model { get; set; }
         public string Body { get; set; }
         public int Year { get; set; }
-        public long Mileage { get; set; }
+        public int Mileage { get; set; }
         public string FuelType { get; set; }
         public string Transmission { get; set; }
+        public int Price { get; set; }
     }
 }
