@@ -11,6 +11,10 @@ namespace Application.Services.Car
     {
         Task<IEnumerable<GetCarDTO>> GetAllCars();
         Task<GetCarDTO> GetCarById(int id);
+        Task<IEnumerable<GetCarDTO>> GetCarsByBrand(string brand);
+        Task<IEnumerable<GetCarDTO>> GetCarsByBody(string body);
+        Task<IEnumerable<GetCarDTO>> GetCarsByMileage(int mileage);
+        Task<IEnumerable<GetCarDTO>> GetCarsByPrice(int price);
         void CreateCar(CreateCarDTO carDTO);
         void UpdateCar(UpdateCarDTO carDTO);
         void DeleteCar(int id);

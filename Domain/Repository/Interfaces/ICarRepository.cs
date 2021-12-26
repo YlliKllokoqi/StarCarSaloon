@@ -11,6 +11,10 @@ namespace Domain.Repository.Interfaces
     {
         Task<IEnumerable<Car>> GetAllCars();
         Task<Car> GetCarById(int id);
+        Task<IEnumerable<Car>> GetCarsByBrand(string brand);
+        Task<IEnumerable<Car>> GetCarsByBody(string body);
+        Task<IEnumerable<Car>> GetCarsByPrice(int price);
+        Task<IEnumerable<Car>> GetCarsByMileage(int mileage);
         void CreateCar(Car car);
         void UpdateCar(Car car);
         void DeleteCar(int id);

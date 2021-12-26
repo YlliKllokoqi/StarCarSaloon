@@ -40,6 +40,30 @@ namespace Application.Services.Car
             return mapper.Map<GetCarDTO>(car);
         }
 
+        public async Task<IEnumerable<GetCarDTO>> GetCarsByBody(string body)
+        {
+            var cars = await repository.GetCarsByBody(body);
+            return mapper.Map<IEnumerable<GetCarDTO>>(cars);
+        }
+
+        public async Task<IEnumerable<GetCarDTO>> GetCarsByBrand(string brand)
+        {
+            var cars = await repository.GetCarsByBrand(brand);
+            return mapper.Map<IEnumerable<GetCarDTO>>(cars);
+        }
+
+        public async Task<IEnumerable<GetCarDTO>> GetCarsByMileage(int mileage)
+        {
+            var cars = await repository.GetCarsByMileage(mileage);
+            return mapper.Map<IEnumerable<GetCarDTO>>(cars);
+        }
+
+        public async Task<IEnumerable<GetCarDTO>> GetCarsByPrice(int price)
+        {
+            var cars = await repository.GetCarsByPrice(price);
+            return mapper.Map<IEnumerable<GetCarDTO>>(cars);
+        }
+
         public void UpdateCar(UpdateCarDTO carDTO)
         {
             var UpdatedCar = mapper.Map<Domain.Entities.Car>(carDTO);
