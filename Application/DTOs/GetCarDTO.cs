@@ -12,6 +12,7 @@ namespace Application.DTOs
         public string Brand { get; set; }
         public string Model { get; set; }
         public string Body { get; set; }
+        public string Color { get; set; }
         public int Year { get; set; }
         public int Mileage { get; set; }
         public string FuelType { get; set; }
