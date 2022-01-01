@@ -1,5 +1,6 @@
 ﻿using Domain.Repository.Interfaces;
 using Infrastructure.Persistence.Repository;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,6 +20,8 @@ namespace Infrastructure
             {
                 options.UseSqlServer(configuration.GetConnectionString("AppDbContext")).EnableSensitiveDataLogging();
             });
+
+            
 
             services.AddScoped<ICarRepository, CarRepository>();
 
