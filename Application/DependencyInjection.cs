@@ -1,4 +1,5 @@
 ﻿using Application.Services.Car;
+using Application.Services.Identity;
 using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -17,6 +18,7 @@ namespace Application
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             services.AddScoped<ICarService, CarService>();
+            services.AddScoped<IAccountService, AccountService>();
 
             services.AddMvc().AddFluentValidation(fv =>
             {
