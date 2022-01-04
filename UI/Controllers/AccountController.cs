@@ -36,8 +36,15 @@ namespace UI.Controllers
         public async Task<IActionResult> Register(RegisterModel register)
         {
             var account = mapper.Map<RegisterDTO>(register);
-            await accountService.Register(account);
-            return Ok("Registration successful");
+            var result = await accountService.Register(account);
+            //if(result == null) {
+            //    return BadRequest("Registation Failed");
+            //}
+            //else
+            //{
+                return Ok("Registration successful");
+            //}
+            
         }
     }
 }
