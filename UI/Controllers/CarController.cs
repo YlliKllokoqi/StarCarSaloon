@@ -1,6 +1,7 @@
 ﻿using Application.DTOs;
 using Application.Services.Car;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Model.Car;
@@ -22,6 +23,7 @@ namespace UI.Controllers
             this.mapper = mapper;
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult CreateCar(CreateCarModel car)
         {
@@ -29,6 +31,7 @@ namespace UI.Controllers
             service.CreateCar(createdCar);
             return Ok();
         }
+
 
         [HttpGet]
         public async Task<IEnumerable<GetCarModel>> GetAllCars()
@@ -38,6 +41,7 @@ namespace UI.Controllers
             return returnedCars;
         }
 
+
         [HttpGet("{id}")]
         public async Task<GetCarModel> GetCarById(int id)
         {
@@ -45,6 +49,7 @@ namespace UI.Controllers
             var returnedCar = mapper.Map<GetCarModel>(car);
             return returnedCar;
         }
+
 
         [HttpGet]
         [Route("/api/Car/brand/{brand}")]
@@ -82,6 +87,7 @@ namespace UI.Controllers
             return returnedCars;
         }
 
+        [Authorize]
         [HttpPut]
         public async Task<IActionResult> UpdateCar(UpdateCarModel car)
         {
@@ -92,6 +98,7 @@ namespace UI.Controllers
             return Ok();
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public IActionResult DeleteCar(int id)
         {

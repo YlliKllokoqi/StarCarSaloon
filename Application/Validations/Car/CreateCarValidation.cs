@@ -15,6 +15,7 @@ namespace Application.Validations.Car
             RuleFor(x => x.Brand).NotEmpty().NotNull();
             RuleFor(x => x.Model).NotEmpty().NotNull();
             RuleFor(x => x.Body).NotEmpty().NotNull();
+            RuleFor(x => x.Color).NotEmpty().NotNull();
             RuleFor(x => x.Year).NotNull().LessThanOrEqualTo(2021).GreaterThan(1960);
             RuleFor(x => x.Mileage).LessThan(100000).GreaterThanOrEqualTo(0);
             RuleFor(x => x.FuelType).NotEmpty().NotNull();
